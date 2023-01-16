@@ -10,18 +10,18 @@ services:
 #    environment:
 #      - SQLITE_DB=db.sqlite3
 
-  web:
-    image: kishikmaxim/adcm:v0.5.5.5
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+#  web:
+#    image: kishikmaxim/adcm:v0.5.5.5
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - .:/code
+#    ports:
+#      - "8000:8000"
 #    depends_on:
 #      - db
 
   neo4j_user:
-    image: neo4j:community
+    image: neo4j:5.2.0
 
 
     restart: unless-stopped
@@ -39,10 +39,10 @@ services:
 #      - NEO4J_dbms_memory_pagecache_size=1G
 #      - NEO4J_dbms.memory.heap.initial_size=1G
 #      - NEO4J_dbms_memory_heap_max__size=1G
-      - NEO4J_AUTH=neo4j/23109900
+      - NEO4J_AUTH=neo4j/231099
 
   neo4j_historical:
-    image: neo4j:community
+    image: neo4j:5.2.0
 
 
     restart: unless-stopped
@@ -60,4 +60,4 @@ services:
 #      - NEO4J_dbms_memory_pagecache_size=1G
 #      - NEO4J_dbms.memory.heap.initial_size=1G
 #      - NEO4J_dbms_memory_heap_max__size=1G
-      - NEO4J_AUTH=neo4j/23109900
+      - NEO4J_AUTH=neo4j/231099

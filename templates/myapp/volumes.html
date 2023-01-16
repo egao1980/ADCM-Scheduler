@@ -70,8 +70,8 @@ table.dataTable thead .sorting_desc_disabled:before {
   {% for subel in el %}
 <tr data-node="treetable-{{ subel.wbs3_id }}" data-pnode="treetable-parent-{{ grouper }}">
 
-  {% for subk, subv in subel.items %}
-            <td>{{ subv }}</td>
+  {% for _, subv in subel.items %}
+            <td>{{ subv|default_if_none:"" }}</td>
 
 
         {% endfor %}
