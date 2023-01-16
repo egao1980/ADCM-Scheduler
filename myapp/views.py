@@ -432,7 +432,7 @@ def volumes(request):
         dins.add(el["wbs3_id"])
 
     # add async
-    user_graph = neo4jexplorer.Neo4jExplorer(uri=URL)
+    user_graph = neo4jexplorer.Neo4jExplorer()
     # тут ресторю в свой граф из эксель
     time_now = datetime.now()
     try:
@@ -702,6 +702,9 @@ def schedule(request):
         return redirect('/login/')
 
     session = data_collect.authentication(url=URL, user=USER, password=PASS)
+    # URL = cfg.get('url')
+    # USER = cfg.get('user')
+    # PASS = cfg.get('password')
     # distances = data_collect.calculateDistance(session=session)
     distances = ()
     dins = []
@@ -718,7 +721,7 @@ def schedule(request):
             result[el['wbs1']][el['wbs2']] = []
             result_din[el['wbs1']][el['wbs2']] = []
         if el['wbs3'] not in result[el['wbs1']][el['wbs2']]:
-            result[el['wbs1']][el['wbs2']].append(el['wbs3_id'] + str(el['wbs3']))
+            result[el['wbs1']][el['wbs2']].append(el['wbs3_id'] or '' + str(el['wbs3']))
             result_din[el['wbs1']][el['wbs2']].append(el['wbs3_id'])
         dins.append(el['wbs3_id'])
         names[el['wbs3_id'] + str(el['wbs3'])] = el['name']

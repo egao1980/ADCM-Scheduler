@@ -269,17 +269,12 @@ def main(files: List[Union[str, Path]]) -> List[Dict[str, str]]:
                         attrs[a] = attrs.setdefault(a, 0) + sub_node[a]
 
             node_lst.append({
-                # "storey": storey,
-                # "count": count,
-                # "length": attrs.get("Length"),
-                # "area": attrs.get("Area", attrs.get("NetArea")),
-                # "ifc_type": n["is_a"],
-                "wbs1": attrs.get("ADCM_Title", 'No title'),
-                "wbs2": G.nodes[storey].get("ADCM_Level", 'No level'),
-                "wbs3_id": attrs.get("ADCM_DIN", 'No DIN'),
-                "wbs3": attrs.get("ADCM_RD", 'No RD'),
-                "name": n.get("group_type", 'No type'),
-                "value": attrs.get("NetVolume", attrs.get("GrossVolume", attrs.get("Area", attrs.get("NetArea", "No volume")))),
+                "wbs1": attrs.get("ADCM_Title"),
+                "wbs2": G.nodes[storey].get("ADCM_Level"),
+                "wbs3": attrs.get("ADCM_RD"),
+                "wbs3_id": attrs.get("ADCM_DIN"),
+                "name": n.get("group_type"),
+                "value": attrs.get("NetVolume", attrs.get("GrossVolume", attrs.get("Area", attrs.get("NetArea")))),
                 "wbs": "".join(filter(None, [attrs.get("ADCM_Title"), attrs.get("ADCM_DIN")]))
             })
 

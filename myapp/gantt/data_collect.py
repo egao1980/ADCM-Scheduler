@@ -17,7 +17,7 @@ NEW_USER = cfg.get('new_user')
 NEW_PASS = cfg.get('new_password')
 LAST_URL = cfg.get('last_url')
 
-types_of_links = {"finish_to_start": "0", "start_to_start": "1", "finish_to_finish": "2", "start_to_finish": "3"}
+# types_of_links = {"finish_to_start": "0", "start_to_start": "1", "finish_to_finish": "2", "start_to_finish": "3"}
 
 
 def get_name_by_din(session: Session, din: str) -> str:
