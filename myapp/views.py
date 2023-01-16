@@ -702,9 +702,6 @@ def schedule(request):
         return redirect('/login/')
 
     session = data_collect.authentication(url=URL, user=USER, password=PASS)
-    # URL = cfg.get('url')
-    # USER = cfg.get('user')
-    # PASS = cfg.get('password')
     # distances = data_collect.calculateDistance(session=session)
     distances = ()
     dins = []
@@ -723,7 +720,7 @@ def schedule(request):
         if el['wbs3'] not in result[el['wbs1']][el['wbs2']]:
             result[el['wbs1']][el['wbs2']].append(el['wbs3_id'] or '' + str(el['wbs3']))
             result_din[el['wbs1']][el['wbs2']].append(el['wbs3_id'])
-        dins.append(el['wbs3_id'])
+        dins.append(el['wbs3_id' or ''])
         names[el['wbs3_id'] + str(el['wbs3'])] = el['name']
 
     Task2.objects.all().delete()
